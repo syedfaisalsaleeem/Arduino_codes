@@ -96,19 +96,19 @@ else if(x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&l==1&&x==LOW&&x
   { 
      lcd.clear();
      lcd.setCursor(0,0);
-     if (count<=0)
+     if (count<=0.0)
      {count=0;
      lcd.setCursor(0,0);
      lcd.print("Temperature");
      lcd.setCursor(0,1);
-     lcd.print(count);
+     lcd.print(count,1);
      }
      else{
      count=count-0.1;
      lcd.setCursor(0,0);
      lcd.print("Temperature");
      lcd.setCursor(0,1);
-     lcd.print(count);
+     lcd.print(count,1);
      }
      
      adc_key_in=1000;

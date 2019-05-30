@@ -16,14 +16,14 @@ int adc_key_in = 0;
 #define btnSELECT 4
 #define btnNONE 5
 int x,l;
-
+int s,t;
 int x_1;
 int x_2;
 int previous = LOW;
 int previous_1=LOW;
 int previous_2=LOW;
 unsigned long time = 0;           // the last time the output pin was toggled
-unsigned long debounce = 200UL;
+unsigned long debounce = 100L;
 int count_1,count_2,count_3,count_4,count_5=0;
 float count;
 int new_1=0;
@@ -54,6 +54,7 @@ else if(adc_key_in<260 && adc_key_in >240)
 {
   x_1=HIGH; 
 }
+
 else if(adc_key_in>630 && adc_key_in <650)
 {
   x_2=HIGH;
@@ -70,8 +71,29 @@ else
 //  x_1=HIGH;
 //}
 
-if(x==HIGH &&previous==LOW && millis()-time >debounce && l==1&&x_1==LOW&&x_2==LOW)
-  { 
+if(x==HIGH && millis()-time >debounce && l==1&&x_1==LOW&&x_2==LOW)
+  {  if(x==HIGH && previous==LOW && l==1&&x_1==LOW&&x_2==LOW)
+       {  delay(100);
+          lcd.clear();
+          lcd.setCursor(0,0);
+          if (count>=100)
+     {count=100;
+     lcd.setCursor(0,0);
+     lcd.print("Temperature");
+     lcd.setCursor(0,1);
+     lcd.print(count,1);
+     }
+     else{
+     count=count+0.1;
+     s=1;
+     lcd.setCursor(0,0);
+     lcd.print("Temperature");
+     lcd.setCursor(0,1);
+     lcd.print(count,1);
+         }
+     adc_key_in=1000;
+     time = millis();
+         }
      lcd.clear();
      lcd.setCursor(0,0);
      if (count>=100)
@@ -82,18 +104,33 @@ if(x==HIGH &&previous==LOW && millis()-time >debounce && l==1&&x_1==LOW&&x_2==LO
      lcd.print(count,1);
      }
      else{
-     count=count+0.1;
      
-     lcd.setCursor(0,0);
-     lcd.print("Temperature");
-     lcd.setCursor(0,1);
-     lcd.print(count,1);
+     if (s==1)
+        {count=count;
+          lcd.setCursor(0,0);
+        lcd.print("Temperature");
+     
+        lcd.setCursor(0,1);
+        lcd.print(count,1);
+        s=0;
+        }
+      
+      else
+        {count=count+1;
+          lcd.setCursor(0,0);
+        lcd.print("Temperature");
+     
+        lcd.setCursor(0,1);
+        lcd.print(count,1);
+        s=0;}
      }
      adc_key_in=1000;
      time = millis();
    }
-else if(x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&l==1&&x==LOW&&x_2==LOW)
-  { 
+else if(x_1==HIGH && millis()-time >debounce &&l==1&&x==LOW&&x_2==LOW)
+  {  
+if(x_1==HIGH && previous_1==LOW  && millis()-time >debounce && l==1&&x==LOW&&x_2==LOW)
+       {  delay(100);
      lcd.clear();
      lcd.setCursor(0,0);
      if (count<=0)
@@ -101,19 +138,76 @@ else if(x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&l==1&&x==LOW&&x
      lcd.setCursor(0,0);
      lcd.print("Temperature");
      lcd.setCursor(0,1);
-     lcd.print(count);
+     lcd.print(count,1);
      }
      else{
      count=count-0.1;
+     t=1;
      lcd.setCursor(0,0);
      lcd.print("Temperature");
      lcd.setCursor(0,1);
-     lcd.print(count);
+     lcd.print(count,1);
+         }
+     adc_key_in=1000;
+     time = millis();
+         }
+     lcd.clear();
+     lcd.setCursor(0,0);
+     if (count<=0)
+     {count=0;
+     lcd.setCursor(0,0);
+     lcd.print("Temperature");
+     lcd.setCursor(0,1);
+     lcd.print(count,1);
+     }
+     else{
+     
+     if (t==1)
+        {count=count;
+          lcd.setCursor(0,0);
+        lcd.print("Temperature");
+     
+        lcd.setCursor(0,1);
+        lcd.print(count,1);
+        t=0;
+        }
+      else
+        {count=count-1;
+          lcd.setCursor(0,0);
+        lcd.print("Temperature");
+     
+        lcd.setCursor(0,1);
+        lcd.print(count,1);}
+     }
+     adc_key_in=1000;
+     time = millis();
+
+   }
+
+/*
+else if(x_1==HIGH && millis()-time >debounce &&l==1&&x==LOW&&x_2==LOW)
+  {  delay(100);
+     lcd.clear();
+     lcd.setCursor(0,0);
+     if (count<=0.0)
+     {count=0;
+     lcd.setCursor(0,0);
+     lcd.print("Temperature");
+     lcd.setCursor(0,1);
+     lcd.print(count,1);
+     }
+     else{
+     count=count-0.10;
+     lcd.setCursor(0,0);
+     lcd.print("Temperature");
+     lcd.setCursor(0,1);
+     lcd.print(count,1);
      }
      
      adc_key_in=1000;
      time = millis();
    }
+   */
 else if(x==HIGH &&previous==LOW && millis()-time >debounce && l==2&&x_1==LOW&&x_2==LOW)
   { 
      lcd.clear();
@@ -226,10 +320,10 @@ else if(x==HIGH &&previous==LOW && millis()-time >debounce && l==5&&x_1==LOW&&x_
   { 
      lcd.clear();
      lcd.setCursor(0,0);
-     count_4=count_4+1;
+     //count_4=count_4+1;
      lcd.print("Delay Timer");
      lcd.setCursor(0,1);
-     lcd.print(count_4);
+     lcd.print("ON");
      adc_key_in=1000;
      time = millis();
    }
@@ -237,10 +331,10 @@ else if(x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&l==5&&x==LOW&&x
   { 
      lcd.clear();
      lcd.setCursor(0,0);
-     count_4=count_4-1;
+     //count_4=count_4-1;
      lcd.print("Delay Timer");
      lcd.setCursor(0,1);
-     lcd.print(count_4);
+     lcd.print("OFF");
      adc_key_in=1000;
      time = millis();
    }
@@ -361,7 +455,7 @@ int mode(int m_1,int def,int count,int count_1,int count_2,int count_3,int count
     lcd.setCursor(0,0);
     lcd.print("Delay Timer");
     lcd.setCursor(0,1);
-    lcd.print(count_4);
+    lcd.print("ON");
     return def;
   
   }

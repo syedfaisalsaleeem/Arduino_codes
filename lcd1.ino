@@ -39,7 +39,7 @@ if(adc_key_in<110 && adc_key_in>90){
        }
 else if(adc_key_in<260 && adc_key_in >240)
 {
-  x_1=HIGH; 
+  x_1=HIGH;
 }
 else
 {
@@ -53,7 +53,7 @@ else
 //}
 
  if(x==HIGH &&previous==LOW && millis()-time >debounce)
-  { 
+  {
      lcd.clear();
      lcd.setCursor(0,0);
      count=count+1;
@@ -64,7 +64,7 @@ else
      time = millis();
    }
 else if(x_1==HIGH &&previous_1==LOW && millis()-time >debounce)
-  { 
+  {
      lcd.clear();
      lcd.setCursor(0,0);
      count=count-1;
