@@ -41,9 +41,8 @@ void setup() {
   Serial.begin(9600);
 lcd.begin(16, 2); // start the library
 lcd.setCursor(0,0);
-lcd.print('Temp:');
-lcd.setCursor(0,1);
-lcd.print(current_date);
+//lcd.setCursor(0,1);
+//lcd.print(current0_date);
 
 }
 
@@ -368,13 +367,16 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                          //lcd.print(HH_1);
                          //lcd.setCursor(1,1);
                          //lcd.print("HH");
-                         lcd.setCursor(4,1);
-                         lcd.print(mm_1);
-                         lcd.setCursor(6,1);
+                         
+                         //lcd.setCursor(1,1);
+                         //lcd.print(mm_1);
+                         lcd.setCursor(2,1);
+                         lcd.print(":");
+                         lcd.setCursor(3,1);
                          lcd.print("MM");
-                         lcd.setCursor(8,1);
-                         lcd.print(ss_1);
-                         lcd.setCursor(10,1);
+                         lcd.setCursor(5,1);
+                         lcd.print(":");
+                         lcd.setCursor(6,1);
                          lcd.print("SS");
                          adc_key_in=1000;
                          time = millis();
@@ -383,8 +385,7 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                             HH_1=60;
                             lcd.setCursor(0,1);
                             lcd.print(HH_1);
-                            lcd.setCursor(2,1);
-                            lcd.print("HH");
+                            
 
                             }
                          else
@@ -392,8 +393,6 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                             HH_1=HH_1+1;
                             lcd.setCursor(0,1);
                             lcd.print(HH_1);
-                            lcd.setCursor(2,1);
-                            lcd.print("HH");
                               
                             }
                          
@@ -412,13 +411,13 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                          //lcd.print(HH_1);
                          //lcd.setCursor(1,1);
                          //lcd.print("HH");
-                         lcd.setCursor(4,1);
-                         lcd.print(mm_1);
-                         lcd.setCursor(6,1);
+                         lcd.setCursor(2,1);
+                         lcd.print(":");
+                         lcd.setCursor(3,1);
                          lcd.print("MM");
-                         lcd.setCursor(8,1);
-                         lcd.print(ss_1);
-                         lcd.setCursor(10,1);
+                         lcd.setCursor(5,1);
+                         lcd.print(":");
+                         lcd.setCursor(6,1);
                          lcd.print("SS");
                          adc_key_in=1000;
                          time = millis();
@@ -427,16 +426,14 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                             HH_1=0;
                             lcd.setCursor(0,1);
                             lcd.print(HH_1);
-                            lcd.setCursor(2,1);
-                            lcd.print("HH");
+
                             }
                          else
                             {
                             HH_1=HH_1-1;
                             lcd.setCursor(0,1);
                             lcd.print(HH_1);
-                            lcd.setCursor(2,1);
-                            lcd.print("HH");
+
                               
                             }
 
@@ -450,15 +447,16 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                          lcd.print("Timer");
                          lcd.setCursor(0,1);
                          lcd.print(HH_1);
+                         
                          lcd.setCursor(2,1);
-                         lcd.print("HH");
+                         lcd.print(":");
                          //lcd.setCursor(3,1);
                          //lcd.print(mm_1);
                          //lcd.setCursor(4,1);
                          //lcd.print("MM");
-                         lcd.setCursor(8,1);
-                         lcd.print(ss_1);
-                         lcd.setCursor(10,1);
+                         lcd.setCursor(5,1);
+                         lcd.print(":");
+                         lcd.setCursor(6,1);
                          lcd.print("SS");
                          adc_key_in=1000;
                          time = millis();
@@ -466,20 +464,20 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                            {
                             mm_1=60;
                             
-                            lcd.setCursor(4,1);
+                            lcd.setCursor(3,1);
                             //lcd.rightToLeft();
                             lcd.print(mm_1);
-                            lcd.setCursor(6,1);
-                            lcd.print("MM");
+                            //lcd.setCursor(1,1);
+                            //lcd.print(" ");
+                            
                             }
                          else
                             {
                             mm_1=mm_1+1;
-                            lcd.setCursor(4,1);
+                            lcd.setCursor(3,1);
                             //lcd.rightToLeft();
                             lcd.print(mm_1);
-                            lcd.setCursor(6,1);
-                            lcd.print("MM");
+                            
                               
                             }
                          
@@ -492,18 +490,20 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                          lcd.clear();
                          lcd.setCursor(0,0);
                          //mm_1=mm_1-1;
+                         ;
                          lcd.print("Timer");
                          lcd.setCursor(0,1);
                          lcd.print(HH_1);
+                         
                          lcd.setCursor(2,1);
-                         lcd.print("HH");
+                         lcd.print(":");
                          //lcd.setCursor(3,1);
                          //lcd.print(mm_1);
                          //lcd.setCursor(4,1);
                          //lcd.print("MM");
-                         lcd.setCursor(8,1);
-                         lcd.print(ss_1);
-                         lcd.setCursor(10,1);
+                         lcd.setCursor(5,1);
+                         lcd.print(":");
+                         lcd.setCursor(6,1);
                          lcd.print("SS");
                          adc_key_in=1000;
                          time = millis();
@@ -511,61 +511,62 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                            {
                             mm_1=0;
                             
-                            lcd.setCursor(4,1);
+                            lcd.setCursor(3,1);
                             //lcd.rightToLeft();
                             lcd.print(mm_1);
-                            lcd.setCursor(6,1);
-                            lcd.print("MM");
+                            //lcd.setCursor(1,1);
+                            //lcd.print(" ");
                             }
                          else
                             {
                             mm_1=mm_1-1;
-                            lcd.setCursor(4,1);
+                            lcd.setCursor(3,1);
                             //lcd.rightToLeft();
                             lcd.print(mm_1);
-                            lcd.setCursor(6,1);
-                            lcd.print("MM");
+                            //lcd.setCursor(1,1);
+                            //lcd.print(" ");
                               
                             }
                         
                       }
           else if(x==HIGH &&previous==LOW && millis()-time >debounce&&x_1==LOW&&x_2==LOW && exit_1==2)  
-                         {lcd.clear();
+                         {
+                          lcd.clear();
                          lcd.setCursor(0,0);
-                         //ss_1=ss_1+1;
+                         
                          lcd.print("Timer");
                          lcd.setCursor(0,1);
                          lcd.print(HH_1);
                          lcd.setCursor(2,1);
-                         lcd.print("HH");
-                         lcd.setCursor(4,1);
+                         lcd.print(":");
+                         lcd.setCursor(3,1);
                          lcd.print(mm_1);
-                         lcd.setCursor(6,1);
-                         lcd.print("MM");
-                         //lcd.setCursor(6,1);
-                         //lcd.print(ss_1);
-                         //lcd.setCursor(7,1);
-                         //lcd.print("SS");
-                         adc_key_in=1000;
+                         lcd.setCursor(5,1);
+                         lcd.print(":");
+                        // lcd.setCursor(6,1);
+                        // lcd.print(ss_1);
+                        // lcd.setCursor(7,1);
+                        // lcd.print("SS");
+                        adc_key_in=1000;
                          time = millis();
                          if(ss_1>=60)
                            {
                             ss_1=60;
                             
-                            lcd.setCursor(8,1);
+                             lcd.setCursor(6,1);
                             //lcd.rightToLeft();
                             lcd.print(ss_1);
-                            lcd.setCursor(10,1);
-                            lcd.print("SS");
+                            //lcd.setCursor(6,1);
+                            //lcd.print("SS");
                             }
                          else
                             {
                             ss_1=ss_1+1;
-                            lcd.setCursor(8,1);
+                                lcd.setCursor(6,1);
                             //lcd.rightToLeft();
                             lcd.print(ss_1);
-                            lcd.setCursor(10,1);
-                            lcd.print("SS");
+                            //lcd.setCursor(10,1);
+                            //lcd.print("SS");
                               
                             }
                          
@@ -582,32 +583,34 @@ else if((x_1==HIGH &&previous_1==LOW && millis()-time >debounce &&x==LOW&&x_2==L
                          lcd.setCursor(0,1);
                          lcd.print(HH_1);
                          lcd.setCursor(2,1);
-                         lcd.print("HH");
-                         lcd.setCursor(4,1);
+                         lcd.print(":");
+                         lcd.setCursor(3,1);
                          lcd.print(mm_1);
-                         lcd.setCursor(6,1);
-                         lcd.print("MM");
+                         lcd.setCursor(5,1);
+                         lcd.print(":");
                         // lcd.setCursor(6,1);
                         // lcd.print(ss_1);
                         // lcd.setCursor(7,1);
                         // lcd.print("SS");
+                        adc_key_in=1000;
+                         time = millis();
                          if(ss_1<=0)
                            {
                             ss_1=0;
-                            lcd.setCursor(8,1);
+                            lcd.setCursor(6,1);
                             //lcd.rightToLeft();
                             lcd.print(ss_1);
-                            lcd.setCursor(10,1);
-                            lcd.print("SS");
+                            //lcd.setCursor(6,1);
+                            //lcd.print("SS");
                             }
                          else
                             {
                             ss_1=ss_1-1;
-                            lcd.setCursor(8,1);
+                            lcd.setCursor(6,1);
                             //lcd.rightToLeft();
                             lcd.print(ss_1);
-                            lcd.setCursor(10,1);
-                            lcd.print("SS");
+                            //lcd.setCursor(10,1);
+                            //lcd.print("SS");
                               
                             }
 
@@ -1042,6 +1045,17 @@ else if(x_2==HIGH &&previous_2==LOW && millis()-time >debounce&&x_1==LOW&&x==LOW
         */
      
    }
+else if(adc_key_in>910)
+{   
+    time_1=millis();
+    time_s=time_1/1000;
+ 
+    if
+    
+   
+
+  
+}
 /* if(adc_key_in<195){
   previous=HIGH;
 }
@@ -1103,19 +1117,20 @@ int mode(int m_1,int def,float count,int count_1,int count_2,int count_3,int cou
   { //lcd.clear(0,0);
     def=4;
     lcd.setCursor(0,0);
-                         lcd.print("Timer");
-                         lcd.setCursor(0,1);
-                         lcd.print(HH_1);
-                         lcd.setCursor(0,1);
-                         lcd.print("HH");
-                         lcd.setCursor(4,1);
-                         lcd.print(mm_1);
-                         lcd.setCursor(6,1);
-                         lcd.print("MM");
-                         lcd.setCursor(8,1);
-                         lcd.print(ss_1);
-                         lcd.setCursor(10,1);
-                         lcd.print("SS");
+    lcd.print("Timer");
+    //lcd.setCursor(0,1);
+    //lcd.print(HH_1);
+    lcd.setCursor(0,1);
+    lcd.print("HH");
+    lcd.setCursor(2,1);
+    lcd.print(":");
+    //lcd.print(mm_1);
+    lcd.setCursor(3,1);
+    lcd.print("MM");
+    lcd.setCursor(5,1);
+    lcd.print(":");
+    lcd.setCursor(6,1);
+    lcd.print("SS");
     return def;
   
   }
